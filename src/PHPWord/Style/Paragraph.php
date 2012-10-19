@@ -62,8 +62,14 @@ class PHPWord_Style_Paragraph {
 	 * @var int
 	 */
 	private $_spacing;
-	
-	
+
+	/**
+	 * Paragraph indentations
+	 *
+	 * @var PHPWord_Style_Indentation
+	 */
+	private $_indentations;
+
 	/**
 	 * New Paragraph Style
 	 */
@@ -72,6 +78,7 @@ class PHPWord_Style_Paragraph {
 		$this->_spaceBefore     = null;
 		$this->_spaceAfter      = null;
 		$this->_spacing         = null;
+		$this->_indentations    = null;
 	}
 	
 	/**
@@ -83,6 +90,8 @@ class PHPWord_Style_Paragraph {
 	public function setStyleValue($key, $value) {
 		if($key == '_spacing') {
 			$value += 240; // because line height of 1 matches 240 twips
+		} else if($key === '_indentations') {
+			$value = new PHPWord_Style_Indentation($value);
 		}
 		$this->$key = $value;
 	}
@@ -169,6 +178,14 @@ class PHPWord_Style_Paragraph {
 	public function setSpacing($pValue = null) {
 	   $this->_spacing = $pValue;
 	   return $this;
+	}
+
+	/**
+	 *
+	 * @return PHPWord_Style_Indentation
+	 */
+	public function getIndentation() {
+		return $this->_indentations;
 	}
 }
 ?>
