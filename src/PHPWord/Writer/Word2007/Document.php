@@ -239,7 +239,7 @@ class PHPWord_Writer_Word2007_Document extends PHPWord_Writer_Word2007_Base {
         $SpIsObject = ($styleParagraph instanceof PHPWord_Style_Paragraph) ? true : false;
         
 		$depth = $listItem->getDepth();
-		$listType = $listItem->getStyle()->getListType();
+		$listType = $listItem->getStyle()->getIndex();
 		
 		$objWriter->startElement('w:p');
 			$objWriter->startElement('w:pPr');

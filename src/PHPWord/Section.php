@@ -173,14 +173,12 @@ class PHPWord_Section {
 	 * 
 	 * @param string $text
 	 * @param int $depth
-	 * @param mixed $styleFont
-     * @param mixed $styleList
-	 * @param mixed $styleParagraph
+	 * @param PHPWord_Numbering_AbstractNumbering $numberingStyle
 	 * @return PHPWord_Section_ListItem
 	 */
-	public function addListItem($text, $depth = 0, $styleFont = null, $styleList = null, $styleParagraph = null) {
+	public function addListItem($text, $depth = 0, PHPWord_Numbering_AbstractNumbering &$numberingStyle = null, $styleFont = null, $styleParagraph = null) {
 		$text = utf8_encode($text);
-		$listItem = new PHPWord_Section_ListItem($text, $depth, $styleFont, $styleList, $styleParagraph);
+		$listItem = new PHPWord_Section_ListItem($text, $depth, $numberingStyle, $styleFont, $styleParagraph);
 		$this->_elementCollection[] = $listItem;
 		return $listItem;
 	}
