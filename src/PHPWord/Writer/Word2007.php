@@ -146,6 +146,9 @@ class PHPWord_Writer_Word2007 implements PHPWord_Writer_IWriter {
 			$objZip->addFromString('word/_rels/document.xml.rels', $this->getWriterPart('documentrels')->writeDocumentRels($sectionElements));
 			$objZip->addFromString('word/styles.xml', $this->getWriterPart('styles')->writeStyles($this->_document));
 			$objZip->addFromString('word/numbering.xml', $this->getWriterPart('numbering')->writeDocument($this->_document));
+                        file_put_contents('document.xml', $this->getWriterPart('document')->writeDocument($this->_document));
+                        file_put_contents('styles.xml', $this->getWriterPart('styles')->writeStyles($this->_document));
+                        file_put_contents('numbering.xml', $this->getWriterPart('numbering')->writeDocument($this->_document));
             
             // Write static files
 			$objZip->addFile(PHPWORD_BASE_PATH . 'PHPWord/_staticDocParts/settings.xml', 'word/settings.xml');
